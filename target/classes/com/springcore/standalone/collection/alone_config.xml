@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:p="http://www.springframework.org/schema/p"
+xmlns:util="http://www.springframework.org/schema/util"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/util
+http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+<!-- Standalone collection -->
+<util:list list-class="java.util.LinkedList" id="myfriend">
+	<value>Aman</value>
+	<value>Sumitt</value>
+	<value>Abhi</value>
+</util:list>
+
+<!-- Standalone Properties  -->
+<util:properties id="dbconfig">
+	<prop key="driver">com.driver.dbbc</prop>
+	<prop key="username">Abhishek</prop>
+	<prop key="password">A1234fvd</prop>
+	<prop key="url">mysql:jdbc://localhost:3306/db</prop>
+</util:properties>
+
+<!-- Standalone map -->
+<util:map map-class="java.util.HashMap" id="fees">
+	<entry key="Spring Framework" value="8000"/>
+	<entry key="Django" value="5000" />
+	<entry key="Hibernate" value="1000" />
+</util:map>
+
+<bean class="com.springcore.standalone.collection.Person" name="person1">
+	<property name="friend" ref="myfriend" />
+	<property name="feestructure" ref="fees" />
+	<property name="properties" ref="dbconfig"></property>
+	<!-- <property name="friend" ref="myfriend" /> 
+			we can use this as the other option for above declaration	
+	-->
+	
+</bean>
+</beans>
